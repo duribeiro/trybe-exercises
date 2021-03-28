@@ -1,0 +1,25 @@
+h1, p {
+  text-align: center;
+}
+
+.hilight{
+  color: #7c3232;
+  background-color: #f4f4f4;
+  font-family: Impact;
+  font-weight: lighter;
+  letter-spacing: 1px;
+ }
+
+body{
+  background-color: #252222;
+  color: #f4f4f4;
+}
+
+li:hover {
+  background-color: #7c3232; */
+  /* color: #f4f4f4; */
+}
+
+li:active {
+  font-family: Impact;
+}
