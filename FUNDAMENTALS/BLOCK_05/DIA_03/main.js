@@ -61,9 +61,17 @@ function redirectPage() {
     window.open('https://www.google.com.br');
   });
 }
-redirectPage ();
+redirectPage();
 
-
+function hoverH3() {
+  myWebpage.addEventListener('mouseenter', (event) => {
+    myWebpage.style.color = '#2fc18c'
+  });
+  myWebpage.addEventListener('mouseleave', (event) => {
+    myWebpage.style.color = 'white'
+  });
+}
+hoverH3();
 
 function resetText(event) {
   // O Event é passado como um parâmetro para a função.
