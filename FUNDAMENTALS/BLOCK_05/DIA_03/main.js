@@ -21,27 +21,27 @@ Segue abaixo um exemplo do uso de event.target:
 
 //  Crie uma função que adicione a classe 'tech' ao elemento selecionado;
 
-function selectTech () {
+function selectTech() {
   divContainer.addEventListener('click', (event) => {
     const elementTech = document.querySelector('.tech');
     elementTech.classList.remove('tech');
     event.target.classList = 'tech';
   });
 }
-selectTech ();
+selectTech();
 
 // Crie uma função que, ao digitar na caixa de texto, altere o texto do elemento
-function changeTextTech () {
+function changeTextTech() {
   input.addEventListener('change', (event) => {
     const textDiv = document.querySelector('.tech');
     textDiv.innerText = input.value;
     input.value = '';
   });
 }
-changeTextTech ();
+changeTextTech();
 
 // alterar o texto do placeholder automaticamente
-function changePlaceholder () {
+function changePlaceholder() {
   divContainer.addEventListener('click', (event) => {
     let textPlaceholder = 'primeira';
     if (divDois.className === 'tech') {
@@ -49,16 +49,20 @@ function changePlaceholder () {
     } else if (divTres.className === 'tech') {
       textPlaceholder = 'terceira';
     };
-    
+
     input.placeholder = 'Alterar a ' + textPlaceholder + ' tecnologia';
   });
 }
-changePlaceholder ()
+changePlaceholder();
 
 // Crie uma função que, ao clicar duas vezes em 'Meu top 3 do Spotrybefy', ele redirecione para alguma página;
-myWebpage.addEventListener('dblclick', (event) => {
-  window.open('https://www.google.com.br')
-})
+function redirectPage() {
+  myWebpage.addEventListener('dblclick', (event) => {
+    window.open('https://www.google.com.br');
+  });
+}
+redirectPage ();
+
 
 
 function resetText(event) {
