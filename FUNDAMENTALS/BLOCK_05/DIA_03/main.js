@@ -56,6 +56,9 @@ function changePlaceholder () {
 changePlaceholder ()
 
 // Crie uma função que, ao clicar duas vezes em 'Meu top 3 do Spotrybefy', ele redirecione para alguma página;
+myWebpage.addEventListener('dblclick', (event) => {
+  alert('test')
+})
 
 
 function resetText(event) {
