@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flexbox - Flex Flow</title>
+    <title>Flexbox - Align Content</title>
     <style>
       .box {
         color: #9069EF;
@@ -19,14 +19,17 @@
       .box-container {
         background-color: #0fa36b;
         display: flex;
+        flex-wrap: wrap;
+        height: 600px;
         /* ADICIONE AQUI SEUS TESTES */
-        /* width: 500px;
-        height: 300px; */
-        flex-flow: row;
+        align-content: space-between
+        º;
+        ;
       }
     </style>
 
   </head>
+  
   <body>
     <div class="box-container">
       <div class="box">1</div>
@@ -34,6 +37,10 @@
       <div class="box">3</div>
       <div class="box">4</div>
       <div class="box">5</div>
+      <div class="box">6</div>
+      <div class="box">7</div>
+      <div class="box">8</div>
+      <div class="box">9</div>
     </div>
   </body>
 </html>
