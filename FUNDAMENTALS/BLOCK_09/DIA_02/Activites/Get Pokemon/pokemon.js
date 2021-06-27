@@ -20,6 +20,13 @@ const fetchPokemon = () => {
   fetch('https://pokeapi.co/api/v2/pokemon/squirtle').then((response) => {
     response.json().then((pokemon) => {
       appendPokemon(pokemon);
+
+      fetch('https://pokeapi.co/api/v2/pokemon/pikachu').then((response) => {
+        response.json().then((pokemon) => {
+          appendPokemon(pokemon);
+
+        })
+      });
     })
   });
 };

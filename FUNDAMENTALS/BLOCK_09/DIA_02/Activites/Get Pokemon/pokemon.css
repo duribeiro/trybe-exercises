@@ -1,3 +1,17 @@
 body {
   background-color: rgb(236, 234, 234);
 }
+
+h1 {
+  text-align: center;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
