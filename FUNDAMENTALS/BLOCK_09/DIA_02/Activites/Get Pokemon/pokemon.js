@@ -9,19 +9,24 @@ const appendPokemon = (pokemon) => {
   img.src = pokemon.sprites.front_default;
   li.appendChild(img)
 
-
   console.log(pokemon.sprites.front_default);
 };
 
 const getPokemon = (namePokemon) => {
-  fetch(`https://pokeapi.co/api/v2/pokemon/${namePokemon}`).then((response) => {
-    response.json().then((pokemon)=> {
-      appendPokemon(pokemon);
+  return new Promise((resolve, reject) => {
+    fetch(`https://pokeapi.co/api/v2/pokemon/${namePokemon}`).then((response) => {
+      response.json().then((pokemon) => {
+        appendPokemon(pokemon);
+        resolve();
+      });
     });
-  });
+  })
 };
 
 getPokemon('pikachu')
+  .then(() => getPokemon('squirtle'))
+  .then(() => getPokemon('rattata'))
+  .then(() => getPokemon('charizard'))
 
 // const fetchPokemon = () => {
 //   // appendPokemon('skirtle')
