@@ -12,21 +12,43 @@ const appendPokemon = (pokemon) => {
   console.log(pokemon.sprites.front_default);
 };
 
+// essa função chama uma promisse 
 const getPokemon = (namePokemon) => {
   return new Promise((resolve, reject) => {
-    fetch(`https://pokeapi.co/api/v2/pokemon/${namePokemon}`).then((response) => {
-      response.json().then((pokemon) => {
-        appendPokemon(pokemon);
-        resolve();
+    if (namePokemon === 'charizard') {
+      return reject(`Não vou mostrar dados do ${namePokemon}`);
+    } else {
+      fetch(`https://pokeapi.co/api/v2/pokemon/${namePokemon}`).then((response) => {
+        response.json().then((pokemon) => {
+          appendPokemon(pokemon);
+          resolve();
+        });
       });
-    });
+    }
   })
 };
 
-getPokemon('pikachu')
-  .then(() => getPokemon('squirtle'))
-  .then(() => getPokemon('rattata'))
-  .then(() => getPokemon('charizard'))
+
+
+const fetchPokemon = async () => {
+  // // Esse é o código usando then e catch
+  // getPokemon('pikachu')
+  //   .then(() => getPokemon('squirtle'))
+  //   .then(() => getPokemon('rattata'))
+  //   .then(() => getPokemon('charizard'))
+  //   .catch((error) => console.log(error))
+
+  // trabalhando com async, await, try e catch
+  try {
+    await getPokemon('pikachu');
+    await getPokemon('squirtle');
+    await getPokemon('rattata');
+    await getPokemon('charizard');
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 
 // const fetchPokemon = () => {
 //   // appendPokemon('skirtle')
@@ -47,6 +69,7 @@ getPokemon('pikachu')
 // };
 
 // window.onload vai chamar o fetchPokemon depois que tudo tiver carregado no meu html
+
 window.onload = () => {
   fetchPokemon();
 };
