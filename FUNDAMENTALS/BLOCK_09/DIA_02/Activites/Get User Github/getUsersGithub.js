@@ -34,16 +34,15 @@ const showUsersInScreen = (user) => {
 //     .catch((error) => error)
 // }
 
-const getUserGitHub = async () => {
+const getUserGitHub = async (id) => {
   try {
     const response = await fetch(`${API_GITHUB}`);
     const data = await response.json();
     return data
-  } catch(e) {
+  } catch (e) {
     return e
   }
 }
-
 
 window.onload = async () => {
 
@@ -53,7 +52,9 @@ window.onload = async () => {
 
   try {
     const usuarios = await getUserGitHub();
-    usuarios.forEach((user) => showUsersInScreen(user));
+    usuarios.forEach((users)=> {
+      showUsersInScreen(users);
+    });
   } catch (error) {
     console.log(`Deu um erro na api, o erro foi: ${error}`);
   }
