@@ -4,6 +4,8 @@ const people = (firstName, lastName) => `${firstName} ${lastName}`;
 
 const fullName = people('Eduardo', 'Ribeiro')
 
+console.log(fullName);
+
 // const textJSX = 'Hello, JSX';
 // const element = <h1>Hello, {textJSX}</h1>;
 
