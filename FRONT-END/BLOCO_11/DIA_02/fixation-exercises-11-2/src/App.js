@@ -24,7 +24,7 @@ class App extends React.Component {
     return (
       <div>
         {users.map((user) =>
-        <UserProfile user={user} />)}
+        <UserProfile key={user.id}  user={user} />)}
       </div>
     );
   }
