@@ -4,8 +4,13 @@ export default class Form extends Component {
   render() {
     return (
       <div>
-        Meu form via components
+        <h1>Meu form em React via components</h1>
+        <form>
+          <label>
+            Diga qual o seu Estado favorito! De React ou do Brasil, você decide! =D
+            
+          </label>
+        </form>
       </div>
-    )
-  }
+    )}
 }

@@ -7,7 +7,6 @@ class App extends Component {
     return (
       <div className="App">
         <Form />
-        <span>Meu form</span>
       </div>
     );
   }
