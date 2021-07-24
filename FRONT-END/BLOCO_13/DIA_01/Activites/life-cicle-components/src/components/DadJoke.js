@@ -9,7 +9,7 @@ export default class DadJoke extends Component {
 
     console.log("Estou no constructor");
     this.state = {
-      jokeObj: '',
+      jokeObj: undefined,
       loading: true,
       sotoredJokes: [],
     };
@@ -47,16 +47,16 @@ export default class DadJoke extends Component {
   }
 
   render() {
-    const { storedJokes } = this.state;
+    const { storedJokes, jokeObj } = this.state;
     const loadingElement = <span>Loading...</span>;
 
     return (
       <div>
         <span>
-          {this.renderJokeElement()}
+          {jokeObj ? jokeObj.joke : loadingElement}
         </span>
 
-        <span>RENDERIZAÇÃO CONDICIONAL</span>
+        <p>RENDERIZAÇÃO CONDICIONAL</p>
 
       </div>
     )
