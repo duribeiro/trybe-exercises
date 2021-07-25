@@ -11,7 +11,7 @@ export default class DadJoke extends Component {
     this.state = {
       jokeObj: undefined,
       loading: true,
-      sotoredJokes: [],
+      storedJokes: [],
     };
   }
 
@@ -33,6 +33,11 @@ export default class DadJoke extends Component {
   saveJoke() {
     //Salvando a piada no array de piadas existentes
     console.log('Salvei!');
+    this.setState(({ jokeObj }) => ({
+      storedJokes: [jokeObj]
+    }))
+
+    this.fetchJoke();
   }
 
   renderJokeElement() {
@@ -53,10 +58,10 @@ export default class DadJoke extends Component {
     return (
       <div>
         <span>
-          {jokeObj ? jokeObj.joke : loadingElement}
+          {storedJokes.map(({ id, joke }) => (<p key={id}>{joke}</p>))}
         </span>
 
-        <p>RENDERIZAÇÃO CONDICIONAL</p>
+        {jokeObj ? this.renderJokeElement() : loadingElement}
 
       </div>
     )
