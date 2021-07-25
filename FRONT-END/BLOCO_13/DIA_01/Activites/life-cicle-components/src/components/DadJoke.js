@@ -16,12 +16,17 @@ export default class DadJoke extends Component {
   }
 
   async fetchJoke() {
-    const requestHeaders = { headers: { Accept: "application/json" } };
-    const requestReturn = await fetch("https://icanhazdadjoke.com/", requestHeaders);
-    const requestObj = await requestReturn.json();
-    this.setState({
-      jokeObj: requestObj,
-    });
+    this.setState({ loading: true },
+    async () => {
+      const requestHeaders = { headers: { Accept: "application/json" } };
+      const requestReturn = await fetch("https://icanhazdadjoke.com/", requestHeaders);
+      const requestObj = await requestReturn.json();
+      this.setState({
+        loading: false,
+        jokeObj: requestObj,
+      })
+    })
+    console.log(this.state.loading);
   }
 
   // o componetDidMount executa a fetchJoke() apena 1x, após isso o render coloca na tela os resultados, caso a função seja chamada em outro lugar ela ira ficar fazendo requisições sem parar.
@@ -33,8 +38,8 @@ export default class DadJoke extends Component {
   saveJoke() {
     //Salvando a piada no array de piadas existentes
     console.log('Salvei!');
-    this.setState(({ jokeObj }) => ({
-      storedJokes: [jokeObj]
+    this.setState(({ storedJokes, jokeObj }) => ({
+      storedJokes: [...storedJokes, jokeObj]
     }))
 
     this.fetchJoke();
@@ -52,7 +57,7 @@ export default class DadJoke extends Component {
   }
 
   render() {
-    const { storedJokes, jokeObj } = this.state;
+    const { storedJokes, jokeObj, loading } = this.state;
     const loadingElement = <span>Loading...</span>;
 
     return (
@@ -61,7 +66,7 @@ export default class DadJoke extends Component {
           {storedJokes.map(({ id, joke }) => (<p key={id}>{joke}</p>))}
         </span>
 
-        {jokeObj ? this.renderJokeElement() : loadingElement}
+        {loading ? loadingElement : this.renderJokeElement()}
 
       </div>
     )
