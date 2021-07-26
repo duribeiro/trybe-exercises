@@ -19,7 +19,7 @@ export default class App extends Component {
           <Route exact path='/' component={Home} />
           <Route path='/About' component={About} />
           <Route
-            path='/Profile'
+            path='/Profile/:ship'
             render={(props) => <Profile {...props} name="Eduardo" />} />
         </BrowserRouter>
       </div>
