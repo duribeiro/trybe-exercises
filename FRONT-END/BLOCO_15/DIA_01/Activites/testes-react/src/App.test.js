@@ -4,10 +4,17 @@ import App from './App';
 
 test('Verificando se existe o campo Email.', () => {
   const { getByLabelText } = render(<App />);
-  const inputEmail = getByLabelText('Email');
-  expect(inputEmail).toBeInTheDocument();
-  expect(inputEmail.type).toBe('email');
+  const imputEmail = getByLabelText('Email');
+  expect(imputEmail).toBeInTheDocument();
+  expect(imputEmail.type).toBe('email')
 });
+
+// test('Verificando se existe o campo Email.', () => {
+//   const { getByLabelText } = render(<App />);
+//   const inputEmail = getByLabelText('Email');
+//   expect(inputEmail).toBeInTheDocument();
+//   expect(inputEmail.type).toBe('email');
+// });
 
 test('Verificando se existe um botão de enviar', () => {
   const { getByTestId } = render(<App />);
