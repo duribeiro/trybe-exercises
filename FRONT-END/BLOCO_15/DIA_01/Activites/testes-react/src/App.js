@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import './App.css';
+import ValidEmail from './ValidEmail';
 
 export default class App extends Component {
   constructor() {
@@ -39,7 +40,8 @@ export default class App extends Component {
           onClick={ () => this.changeSaveEmail(email)}
         />
         <input id="btn-back" type="button" value="Voltar" />
-        <h2 data-testid="id-email-user">{`Valor: ${saveEmail}`}</h2>
+        {/* <h2 data-testid="id-email-user">{`Valor: ${saveEmail}`}</h2> */}
+        <ValidEmail email={saveEmail}/>
       </div>
     );
   }
