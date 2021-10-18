@@ -3,16 +3,22 @@ import { connect } from 'react-redux';
 
 class FirstComponent extends Component {
   render() {
+    const { myFirstState } = this.props;
+
     return (
-      <h1>
-        Eu sou o FirstComponent
-      </h1>
+      <div>
+        <div>
+          {myFirstState.map((element, index) => 
+          <p key={ index }>{element}</p>
+          )}
+        </div>
+      </div>
     );
   }
 };
 
-const mapStateToProps = state => ({
-  myFirstState: state.myReducer.state
+const mapStateToProps = (state) => ({
+  myFirstState: state.myReducer
 });
 
 export default connect(mapStateToProps)(FirstComponent);
