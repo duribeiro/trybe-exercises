@@ -7,6 +7,8 @@ O context api veio para resolver o problema das props drilling. Ou seja o proble
 ## 1 - Criar um contexto
 
 ```
+//src/myContext.js
+
 import React, { createContext } from 'react';
 
 const MyContext = createContext(defaultValue);
