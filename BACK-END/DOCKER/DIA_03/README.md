@@ -46,11 +46,50 @@ Todos os containers associados a essa rede poderão se comunicar via protocolo T
 
 Ao associarmos um container a essa rede, ela passa a compartilhar toda stack de rede do host , ou seja, da máquina que roda o ambiente Docker . O uso desta rede é recomendada apenas para alguns serviços específicos, normalmente de infra, em que o container precisa desse compartilhamento. Caso contrário, a recomendação é evitá-la.
 
+---
 ## None
 
-Essa é uma rede que não possui nenhum driver associado. Dessa maneira, ao atribuir um container a ela, o mesmo ficará isolado. Ela é útil quando temos containers que utilizam arquivos para a execução de comandos ou para se comunicar, por exemplo, um container de backup ou que rode apenas um script localmente.
+Essa é uma rede que não possui nenhum driver associado. Dessa maneira, ao atribuir um container a ela, o mesmo ficará isolado. Ela é útil quando temos containers que utilizam arquivos para a execução de comandos ou para se comunicar, por exemplo, um container de backup ou que rode apenas um script localmente. Ou seja, quando não há necessidade de enviar esses arquivos via rede.
 
 ---
 ## Criando nossa rede
 
 A forma mais recomendada de comunicarmos nossos containers é criando nossa própria rede. Através dela conseguimos, por exemplo, referenciar um container a partir de outro, utilizando seu nome.
+
+```js
+docker network create -d bridge rede-local
+
+```
+> _`-d` é a forma curta de --driver_
+
+Nesse comando criamos nossa própria rede a partir do drive bridge com o nome de `rede-local`.
+
+---
+## Criando e conectando um container na nossa rede
+
+```js
+docker container run -itd --name novo_container mjgargani/ubuntu-ping
+```
+
+```js
+docker network connect rede-local novo-container
+```
+
+ou
+
+```js
+docker container run -it --name outro_container --network rede-local mjgargani/ubuntu-ping
+```
+Agora dentro do `outro_container` basta no executar o ping para o `novo_container` com o comando:
+
+```js
+ping novo_container
+```
+
+---
+## Desconectar um container da rede
+Pare desconectar um container da rede basta usar o parametro `disconnect`.
+
+```js
+docker network disconnect rede-local outro_container
+```
