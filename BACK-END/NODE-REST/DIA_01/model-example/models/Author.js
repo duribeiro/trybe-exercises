@@ -34,7 +34,7 @@ const getAll = async () => {
 const findById = async (id) => {
   // Repare que substituimos o id por '?' na query.
   // Depois, ao executá-la, informamos um array com o id para o método `execute`.
-  // O `mysql2` vai realizar, de forma segura, a substituição do `?` pelo id informado
+  // O `mysql2` vai realizar, de forma segura, a substituição do `?` pelo id informado.
 
   const query = 'SELECT first_name, middle_name, last_name FROM model_example.authors;';
   const [authorsData] = await connection.execute(query, [id]);
