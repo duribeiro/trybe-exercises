@@ -1,21 +1,18 @@
 const connection = require('./connection');
 
 // Cria uma string com o nome completo do autor
-const getNewAuthor = ({id, firstName, middleName, lastName}) => {
-
+const getNewAuthor = ({ id, firstName, middleName, lastName }) => {
   // Note que `Boolean` é uma função que recebe um parâmetro e retorna true ou false
   // nesse caso, se middle_name for `undefined` ou uma string vazia o retorno será `false`
-  const fullName = [firstName, middleName, lastName]
-    .filter(Boolean)
-    .join(' ');
+  const fullName = [firstName, middleName, lastName].filter(Boolean).join(' ');
 
   return {
-  id,
-  firstName,
-  middleName,
-  lastName,
-  fullName,
- };
+    id,
+    firstName,
+    middleName,
+    lastName,
+    fullName,
+  };
 };
 
 // Converte o nome dos campos de snake_case para camelCase
@@ -34,6 +31,28 @@ const getAll = async () => {
   return authors.map(serialize).map(getNewAuthor);
 };
 
+const findBy = async (id) => {
+  // Repare que substituimos o id por '?' na query.
+  // Depois, ao executá-la, informamos um array com o id para o método `execute`.
+  // O `mysql2` vai realizar, de forma segura, a substituição do `?` pelo id informado.
+
+  const query = 'SELECT first_name, middle_name, last_name FROM model_example.authors;';
+  const [authorsData] = await connection.execute(query, [id]);
+
+  if (authorsData.length === 0) return null;
+
+  // Utilizamos [0] para buscar a primeira linha, que deve ser a única no array de resultados, pois estamos buscando por ID.
+  const { first_name, middle_name, last_name } = authorsData.map(serialize)[0];
+
+  return getNewAuthor({
+    id,
+    firstName,
+    middleName,
+    lastName,
+  });
+};
+
 module.exports = {
   getAll,
-}
+  findById,
+};
