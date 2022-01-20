@@ -31,7 +31,11 @@ const getAll = async () => {
   return authors.map(serialize).map(getNewAuthor);
 };
 
+<<<<<<< HEAD
 const findById = async (id) => {
+=======
+const findBy = async (id) => {
+>>>>>>> 3cf79b64f980164c169d53e87fc8e64ab8134d9b
   // Repare que substituimos o id por '?' na query.
   // Depois, ao executá-la, informamos um array com o id para o método `execute`.
   // O `mysql2` vai realizar, de forma segura, a substituição do `?` pelo id informado.
