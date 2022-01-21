@@ -69,4 +69,5 @@ module.exports = {
   getAll,
   findById,
   create,
+  isValid,
 };
