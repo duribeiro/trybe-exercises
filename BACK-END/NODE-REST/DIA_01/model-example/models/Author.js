@@ -68,4 +68,5 @@ const create = async (firstName, middleName, lastName) => connection.execute(
 module.exports = {
   getAll,
   findById,
+  create,
 };
