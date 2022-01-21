@@ -30,7 +30,7 @@ app.post('/authors', async (req, res) => {
 
   const author = await Author.createAuthor(first_name, middle_name, last_name);
 
-  if (!Author) return res.status(400).json({ message: 'Dados inválidos' });
+  if (!author) { return res.status(400).json({ message: 'Dados inválidos' })};
 
   res.status(201).json(author);
 });
