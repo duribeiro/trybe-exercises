@@ -5,7 +5,7 @@ const Book = require('./models/Book');
 
 const app = express();
 
-const bodyParser = require('body-parser');
+app.use(bodyParser.json());
 
 app.get('/authors', async (_req, res) => {
   const authors = await Author.getAll();
