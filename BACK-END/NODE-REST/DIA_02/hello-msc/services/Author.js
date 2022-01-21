@@ -40,6 +40,16 @@ const findById = async (id) => {
   return getNewAuthor(author);
 };
 
+const createAuthor = async (firstName, middleName, lastName) => {
+  const validAuthor = isValid(firstName, middleName, lastName);
+
+  if (!validAuthor) return false;
+
+  await Author.createAuthor(firstName, middleName, lastName);
+
+  return true;
+};
+
 module.exports = {
   getAll,
   findById,
